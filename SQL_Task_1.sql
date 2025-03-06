@@ -1,7 +1,7 @@
 create table employee_details (
-EmployeeID 	serial ,
-FirstName  varchar(50),
-LastName varchar(50),	
+EmployeeID 	serial primary key,
+FirstName  varchar(50) not null,
+LastName varchar(50) not null,	
 Email varchar(100),
 PhoneNumber	varchar(15),
 HireDate date,	
@@ -16,8 +16,7 @@ insert into employee_details values(1,'Sakshi','Sawate','sakshisawate1@gmail.com
 (3,'Tina','Tiwari','tinatiwari@gmail.com',8765432194,'2022/05/09',50000,1,'No','HR'),
 (4,'Parul','Gulati','parulgulati@gmail.com',9235454343,'2022/12/27',60000,7,'Yes','Project Lead'),
 (5,'Sharvari','Kamble','sharvarikamble@gmail.com',9649063268,'2021/04/05',30000,8,'Yes','Sales');
-
-truncate employee_details;
+select * from employee_details;
 
 copy employee_details from 'D:\ARC\SQL\SQL Task-1\Employee_Details.csv' delimiter ',' csv header;
 
@@ -36,7 +35,7 @@ alter table employee_database rename column Firstname to Name;
 alter table employee_database rename column Lastname to Surname;
 
 
-alter table employee_database add column State varchar NOT NULL DEFAULT 'Unknown';
+alter table employee_database add column State varchar not null default 'Unknown';
 update employee_database set State='India' where isactive=true;
 update employee_database set State='USA' where isactive=false;
 
